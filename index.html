@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke Buddie</title>
+    <meta name="description" content="Luke Buddie — Economics at UC Berkeley, D1 Decathlete, finance and strategy.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">☽</button>
+
+<header class="mobile-header">
+    <a href="index.html" class="name">Luke Buddie</a>
+    <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+<nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="athletics.html">Athletics</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn ↗</a>
+</nav>
+
+<aside class="sidebar">
+    <img src="assets/img/headshot.jpg" alt="Luke Buddie" class="sidebar-photo">
+    <nav class="sidebar-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="athletics.html">Athletics</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+    </nav>
+    <div class="sidebar-social">
+        <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn</a>
+        <span class="dot">·</span>
+        <a href="mailto:lukebuddie04@gmail.com">Email</a>
+    </div>
+</aside>
+
+<main class="main">
+
+    <!-- Hello! with sports animations -->
+    <div class="greeting-wrap">
+        <div class="sport-stage" aria-hidden="true">
+            <span class="sport-item" id="sport-el"></span>
+        </div>
+        <p class="greeting">Hello!</p>
+    </div>
+
+    <h1 class="headline">
+        I'm <span class="name-gradient">Luke Buddie</span>, an Economics
+        student building a foundation in finance,
+        strategy, and data.
+    </h1>
+
+    <div class="cta-row">
+        <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank" class="btn-pill btn-pill-blue">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            Connect on LinkedIn
+        </a>
+        <a href="resume.html" class="btn-pill btn-pill-dark">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+            View my Resume
+        </a>
+    </div>
+
+    <!-- Two-column body, like zezhenwu.com -->
+    <div class="home-body">
+        <div class="home-col">
+            <p><strong>Four years at Berkeley has meant competing at the Division I level while staying deeply invested in business and entrepreneurship.</strong> As a Decathlete and two-time Team Captain, I've learned to manage time, perform under pressure, and lead — not just train. Outside the track, I've studied Economics with a focus on finance and data, worked across sports media, operations, and business development, and built programs connecting student-athletes to industry. I'm drawn to the intersection of quantitative rigor and real-world impact.</p>
+        </div>
+        <div class="home-col">
+            <p>I'm most excited about early-stage companies at the intersection of venture capital, health and consumer tech, AI, and sports. I think the next wave of interesting businesses gets built where those spaces overlap — and I want to be in the room early. I'm actively looking for opportunities in venture and growth-stage finance as I head into a Master's in Commerce at UVA McIntire. When I'm not running through spreadsheets or chasing a PR, I'm on an endless search for my next rec league basketball team and a run club that doesn't leave me in the dust.</p>
+        </div>
+    </div>
+
+    <p class="page-footer">© 2026 Luke Buddie · Berkeley, CA</p>
+</main>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        document.getElementById('theme-btn').textContent = isDark ? '☽' : '☀';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-btn').textContent = savedTheme === 'dark' ? '☀' : '☽';
+    }
+    function toggleMenu() { document.getElementById('mobile-nav').classList.toggle('open'); }
+
+    const sports = [
+        { emoji: '🏀', cls: 'basketball' },
+        { emoji: '🏃', cls: 'runner'     },
+        { emoji: '🏐', cls: 'volleyball' },
+    ];
+    let sportIdx = 0;
+    const sportEl = document.getElementById('sport-el');
+    function playSport() {
+        const s = sports[sportIdx];
+        sportEl.textContent = s.emoji;
+        sportEl.className = `sport-item ${s.cls}`;
+        sportEl.addEventListener('animationend', () => {
+            sportEl.className = 'sport-item';
+            sportIdx = (sportIdx + 1) % sports.length;
+            setTimeout(playSport, 1800);
+        }, { once: true });
+    }
+    setTimeout(playSport, 800);
+</script>
+</body>
+</html>

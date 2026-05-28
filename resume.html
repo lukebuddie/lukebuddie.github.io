@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Luke Buddie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☽</button>
+
+<header class="mobile-header">
+    <a href="index.html" class="name">Luke Buddie</a>
+    <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+<nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="athletics.html">Athletics</a>
+        <a href="projects.html">Projects</a>
+    <a href="resume.html" class="active">Resume</a>
+    <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn ↗</a>
+    <a href="mailto:lukebuddie04@gmail.com">Email</a>
+</nav>
+
+<aside class="sidebar">
+    <img src="assets/img/headshot.jpg" alt="Luke Buddie" class="sidebar-photo">
+    <nav class="sidebar-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="athletics.html">Athletics</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html" class="active">Resume</a>
+    </nav>
+    <div class="sidebar-social">
+        <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn</a>
+        <span class="dot">·</span>
+        <a href="mailto:lukebuddie04@gmail.com">Email</a>
+    </div>
+</aside>
+
+<main class="main">
+    <div class="resume-reveal">
+        <p class="greeting" id="greeting-text"></p>
+        <h1 class="headline" id="headline-text" style="visibility:hidden;">
+            Oh, you actually want to see it?
+        </h1>
+        <div class="typewriter-wrap">
+            <span id="typewriter-text"></span>
+        </div>
+        <div class="resume-actions" id="resume-actions">
+            <a href="assets/Luke_Buddie_Resume.pdf" target="_blank" class="btn-pill btn-pill-blue">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                Open Resume
+            </a>
+            <a href="assets/Luke_Buddie_Resume.pdf" download class="btn-pill btn-pill-dark">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+        <p class="resume-note" id="resume-note">
+            Last updated May 2026 · Feel free to reach out at <a href="mailto:lukebuddie04@gmail.com" style="color:var(--blue);">lukebuddie04@gmail.com</a>
+        </p>
+    </div>
+
+    <p class="page-footer">© 2026 Luke Buddie · Berkeley, CA</p>
+</main>
+
+<script>
+    // ── Theme ──
+    function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        document.querySelector('.theme-toggle').textContent = isDark ? '☽' : '☀';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '☀' : '☽';
+    }
+    function toggleMenu() {
+        document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    // ── Typewriter reveal ──
+    function typeText(el, text, speed, callback) {
+        let i = 0;
+        el.textContent = '';
+        const interval = setInterval(() => {
+            el.textContent += text[i];
+            i++;
+            if (i >= text.length) {
+                clearInterval(interval);
+                if (callback) setTimeout(callback, 400);
+            }
+        }, speed);
+    }
+
+    window.addEventListener('load', () => {
+        const greeting  = document.getElementById('greeting-text');
+        const headline  = document.getElementById('headline-text');
+        const twEl      = document.getElementById('typewriter-text');
+        const actions   = document.getElementById('resume-actions');
+        const note      = document.getElementById('resume-note');
+
+        // Step 1 — greeting fades in
+        setTimeout(() => {
+            typeText(greeting, 'Oh, hi again.', 60, () => {
+
+                // Step 2 — headline appears
+                setTimeout(() => {
+                    headline.style.visibility = 'visible';
+                    headline.style.opacity = '0';
+                    headline.style.transition = 'opacity 0.5s';
+                    requestAnimationFrame(() => {
+                        headline.style.opacity = '1';
+                    });
+
+                    // Step 3 — typewriter line
+                    setTimeout(() => {
+                        typeText(twEl, "Fine, fine — here's my resume.", 45, () => {
+                            // remove cursor
+                            twEl.style.setProperty('--cursor', 'none');
+                            twEl.id = 'typewriter-done';
+
+                            // Step 4 — buttons + note appear
+                            setTimeout(() => {
+                                actions.classList.add('show');
+                                note.classList.add('show');
+                            }, 300);
+                        });
+                    }, 600);
+
+                }, 300);
+            });
+        }, 350);
+    });
+</script>
+
+<style>
+    /* Remove blinking cursor once typing is done */
+    #typewriter-done::after { display: none; }
+    #typewriter-text { font-size: 1rem; color: var(--muted); font-weight: 300; }
+</style>
+</body>
+</html>
