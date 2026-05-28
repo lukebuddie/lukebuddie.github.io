@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☽</button>
 
 <header class="mobile-header">
     <a href="index.html" class="name">Luke Buddie</a>
@@ -16,52 +17,41 @@
     <a href="index.html">Home</a>
     <a href="about.html" class="active">About</a>
     <a href="projects.html">Projects</a>
-    <a href="assets/Luke_Buddie_Resume.pdf" target="_blank">Resume ↗</a>
+    <a href="resume.html">Resume</a>
     <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn ↗</a>
     <a href="mailto:lukebuddie04@gmail.com">Email</a>
 </nav>
 
 <aside class="sidebar">
-    <div class="sidebar-name">
-        <a href="index.html">Luke Buddie<span>Economics · Finance · Strategy</span></a>
-    </div>
+    <img src="assets/img/headshot.jpg" alt="Luke Buddie" class="sidebar-photo">
     <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="projects.html">Projects</a>
-        <a href="assets/Luke_Buddie_Resume.pdf" target="_blank">Resume ↗</a>
+        <a href="resume.html">Resume</a>
     </nav>
     <div class="sidebar-social">
-        <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn ↗</a>
-        <a href="mailto:lukebuddie04@gmail.com">lukebuddie04@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn</a>
+        <span class="dot">·</span>
+        <a href="mailto:lukebuddie04@gmail.com">Email</a>
     </div>
 </aside>
 
 <main class="main">
 
-    <!-- Intro with photo -->
-    <div class="profile-row">
-        <img src="assets/img/headshot.jpg" alt="Luke Buddie" class="profile-photo">
-        <div class="profile-intro">
-            <h1 class="headline" style="font-size:1.6rem; margin-bottom:0.8rem;">
-                About me
-            </h1>
-            <div class="body-text">
-                <p>
-                    UC Berkeley Economics student, D1 Decathlete, and aspiring finance professional.
-                    I balance 20+ hours of weekly athletic training with rigorous academic work in
-                    financial modeling, data analysis, and economic research. GPA: 3.7 / 4.0.
-                </p>
-            </div>
+    <div class="about-intro">
+        <img src="assets/img/headshot.jpg" alt="Luke Buddie" class="about-photo">
+        <div class="about-intro-text">
+            <h1 class="page-headline" style="margin-bottom:0.6rem;">About me</h1>
+            <p>UC Berkeley Economics student, D1 Decathlete, and aspiring finance professional. GPA 3.7 / 4.0. Incoming Master's in Commerce at UVA McIntire, 2027.</p>
         </div>
     </div>
 
     <hr>
 
     <!-- Education -->
-    <p class="section-title">Education</p>
+    <span class="section-label">Education</span>
     <div class="entries">
-
         <div class="entry">
             <div class="entry-date">2027</div>
             <div class="entry-body">
@@ -69,7 +59,6 @@
                 <p class="org">University of Virginia, McIntire School of Commerce</p>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">2022 – 2026</div>
             <div class="entry-body">
@@ -78,7 +67,6 @@
                 <p>Certificate in Entrepreneurship and Technology · GPA 3.7 / 4.0</p>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">Jun – Jul 2025</div>
             <div class="entry-body">
@@ -86,15 +74,13 @@
                 <p class="org">London School of Economics · GPA 4.0</p>
             </div>
         </div>
-
     </div>
 
     <hr>
 
-    <!-- Work Experience -->
-    <p class="section-title">Work Experience</p>
+    <!-- Work -->
+    <span class="section-label">Work Experience</span>
     <div class="entries">
-
         <div class="entry">
             <div class="entry-date">Jun 2025 – Present</div>
             <div class="entry-body">
@@ -108,19 +94,17 @@
                 </ul>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">Jul – Aug 2025</div>
             <div class="entry-body">
                 <h3>Operations &amp; Hospitality Intern</h3>
                 <p class="org">Association of Volleyball Professionals (AVP)</p>
                 <ul>
-                    <li>Supported operations at the nation's largest beach volleyball tournament (60,000+ attendees)</li>
-                    <li>Enhanced client relations at the 2025 Manhattan Beach Open</li>
+                    <li>Supported operations at the nation's largest beach volleyball tournament (60,000+ annual attendees)</li>
+                    <li>Enhanced sales and client relations at the 2025 Manhattan Beach Open</li>
                 </ul>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">Aug – Sep 2025</div>
             <div class="entry-body">
@@ -131,7 +115,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">Aug 2023 – Jun 2024</div>
             <div class="entry-body">
@@ -139,51 +122,32 @@
                 <p class="org">Cornerstone Restaurant and Bar</p>
                 <ul>
                     <li>Led creative marketing campaigns and analyzed consumer trends</li>
-                    <li>Created a line dancing initiative that drove student attendance up over 50%</li>
+                    <li>Created a line-dancing initiative that drove student attendance up over 50%</li>
                     <li>Recorded and edited video content for the venue</li>
                 </ul>
             </div>
         </div>
-
     </div>
 
     <hr>
 
     <!-- Awards -->
-    <p class="section-title">Recognition</p>
+    <span class="section-label">Recognition</span>
     <ul class="award-list">
-        <li>
-            <span class="award-year">2025</span>
-            <span class="award-text">Golden Bear Award — Cal Athletics, highest GPA among male student-athletes</span>
-        </li>
-        <li>
-            <span class="award-year">2024–26</span>
-            <span class="award-text">Team Captain, UC Berkeley Track & Field (selected by majority team vote)</span>
-        </li>
-        <li>
-            <span class="award-year">2024</span>
-            <span class="award-text">2× Student-Athlete Academic Honors, Cal Athletic Fund</span>
-        </li>
-        <li>
-            <span class="award-year">2024</span>
-            <span class="award-text">Most Improved Award — Track & Field team of 120+ athletes (~1,000 point Decathlon improvement)</span>
-        </li>
-        <li>
-            <span class="award-year">2024</span>
-            <span class="award-text">Michael Wood Track Scholarship Fund Recipient</span>
-        </li>
-        <li>
-            <span class="award-year">2022</span>
-            <span class="award-text">Athlete of the Year, Woodside High School — varsity basketball &amp; track and field</span>
-        </li>
+        <li><span class="award-year">2025</span><span class="award-text">Golden Bear Award — Cal Athletics, highest GPA among male student-athletes</span></li>
+        <li><span class="award-year">2024–26</span><span class="award-text">Team Captain, UC Berkeley Track &amp; Field (selected by majority vote, two seasons)</span></li>
+        <li><span class="award-year">2025</span><span class="award-text">LSE Summer School Certificate in Accounting — GPA 4.0</span></li>
+        <li><span class="award-year">2024</span><span class="award-text">2× Student-Athlete Academic Honors, Cal Athletic Fund</span></li>
+        <li><span class="award-year">2024</span><span class="award-text">Most Improved Award — Track &amp; Field, 120+ athletes (~1,000 point Decathlon gain in one year)</span></li>
+        <li><span class="award-year">2024</span><span class="award-text">Michael Wood Track Scholarship Fund Recipient</span></li>
+        <li><span class="award-year">2022</span><span class="award-text">Athlete of the Year, Woodside High School — varsity basketball &amp; track and field</span></li>
     </ul>
 
     <hr>
 
     <!-- Leadership -->
-    <p class="section-title">Leadership &amp; Community</p>
+    <span class="section-label">Leadership &amp; Community</span>
     <div class="entries">
-
         <div class="entry">
             <div class="entry-date">Aug 2023 – Present</div>
             <div class="entry-body">
@@ -192,31 +156,29 @@
                 <p>Connects 50+ student-athletes from 15 varsity sports with industry leaders, promoting career development and professional opportunities.</p>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">Aug 2024 – Present</div>
             <div class="entry-body">
                 <h3>Cohesion Committee</h3>
                 <p class="org">Cameron Institute, UC Berkeley</p>
-                <p>Unifies the 120-person Track &amp; Field team through volunteering, community-building, and team events.</p>
+                <p>Unifies the 120-athlete Track &amp; Field team through volunteer work, community events, and team-building initiatives.</p>
             </div>
         </div>
-
         <div class="entry">
             <div class="entry-date">Aug 2023 – Present</div>
             <div class="entry-body">
                 <h3>Recess / PE Assistant</h3>
                 <p class="org">Cameron Institute · Local Elementary School</p>
-                <p>Volunteers biweekly facilitating safe recess activities for 2nd–5th grade students.</p>
+                <p>Volunteers biweekly facilitating safe, fun recess activities for 2nd–5th grade students.</p>
             </div>
         </div>
-
     </div>
 
-    <!-- Skills -->
     <hr>
-    <p class="section-title">Skills</p>
-    <div class="skills-grid">
+
+    <!-- Skills -->
+    <span class="section-label">Skills</span>
+    <div class="skills-row">
         <div class="skill-group">
             <h4>Finance</h4>
             <ul>
@@ -244,21 +206,33 @@
             <ul>
                 <li>Data Analysis</li>
                 <li>Econometrics</li>
-                <li>CRM Workflows</li>
                 <li>Business Dev.</li>
                 <li>Operations</li>
+                <li>CRM Workflows</li>
                 <li>Canva</li>
             </ul>
         </div>
     </div>
 
-    <p class="page-footer">© 2026 Luke Buddie · Berkeley, California</p>
+    <p class="page-footer">© 2026 Luke Buddie · Berkeley, CA</p>
 </main>
 
 <script>
-function toggleMenu() {
-    document.getElementById('mobile-nav').classList.toggle('open');
-}
+    function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        document.querySelector('.theme-toggle').textContent = isDark ? '☽' : '☀';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '☀' : '☽';
+    }
+    function toggleMenu() {
+        document.getElementById('mobile-nav').classList.toggle('open');
+    }
 </script>
 </body>
 </html>
