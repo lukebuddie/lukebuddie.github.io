@@ -47,7 +47,7 @@
         <div class="sport-stage" aria-hidden="true">
             <span class="sport-item" id="sport-el"></span>
         </div>
-        <p class="greeting" id="greeting">Hello!</p>
+        <p class="greeting">Hello!</p>
     </div>
 
     <h1 class="headline">
@@ -74,36 +74,20 @@
         </a>
     </div>
 
-    <div class="body-section">
-        <p>
-            <strong>I'm finishing a B.A. in Economics</strong> with a Certificate in Entrepreneurship &
-            Technology at UC Berkeley. I serve as Team Captain of the Division I Track &amp; Field team,
-            competing in the Decathlon, and Co-President of the Student-Athlete Business Network —
-            connecting 50+ student-athletes across 15 varsity sports with industry leaders.
-        </p>
-        <p>
-            My academic work spans financial modeling, corporate finance, equity research, and
-            econometrics. Projects include LBO models, M&amp;A analyses, VC investment cases, and
-            economics research papers — all available on the <a href="projects.html">Projects</a> page.
-        </p>
-        <p>
-            I'm pursuing a <strong>Master's in Commerce at UVA McIntire</strong> starting 2027, with
-            interests in investment banking, private equity, and strategy consulting. I was awarded
-            the <strong>Golden Bear Award</strong> by Cal Athletics for the highest GPA among male
-            student-athletes on the team.
-        </p>
-        <p>
-            Beyond the classroom, I'm a D1 <a href="athletics.html">Decathlete</a> — 2× Team Captain,
-            4th place Pac-12 finalist, 2nd-Team All-ACC, and 2× All-Academic ACC. Athletics has
-            sharpened my discipline, resilience, and ability to perform under pressure.
-        </p>
+    <!-- Two-column body, like zezhenwu.com -->
+    <div class="home-body">
+        <div class="home-col">
+            <p><strong>Four years at Berkeley has meant competing at the Division I level while staying deeply invested in business and entrepreneurship.</strong> As a Decathlete and two-time Team Captain, I've learned to manage time, perform under pressure, and lead — not just train. Outside the track, I've studied Economics with a focus on finance and data, worked across sports media, operations, and business development, and built programs connecting student-athletes to industry. I'm drawn to the intersection of quantitative rigor and real-world impact.</p>
+        </div>
+        <div class="home-col">
+            <p>I'm most excited about early-stage companies at the intersection of venture capital, health and consumer tech, AI, and sports. I think the next wave of interesting businesses gets built where those spaces overlap — and I want to be in the room early. I'm actively looking for opportunities in venture and growth-stage finance as I head into a Master's in Commerce at UVA McIntire. When I'm not running through spreadsheets or chasing a PR, I'm on an endless search for my next rec league basketball team and a run club that doesn't leave me in the dust.</p>
+        </div>
     </div>
 
     <p class="page-footer">© 2026 Luke Buddie · Berkeley, CA</p>
 </main>
 
 <script>
-    /* ── Theme ── */
     function toggleTheme() {
         const html = document.documentElement;
         const isDark = html.getAttribute('data-theme') === 'dark';
@@ -116,35 +100,25 @@
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.getElementById('theme-btn').textContent = savedTheme === 'dark' ? '☀' : '☽';
     }
+    function toggleMenu() { document.getElementById('mobile-nav').classList.toggle('open'); }
 
-    function toggleMenu() {
-        document.getElementById('mobile-nav').classList.toggle('open');
-    }
-
-    /* ── Sports animation cycling over "Hello!" ── */
     const sports = [
-        { emoji: '🏀', anim: 'basketball', label: 'basketball' },
-        { emoji: '🏃', anim: 'runner',     label: 'runner'     },
-        { emoji: '🏐', anim: 'volleyball', label: 'volleyball' },
+        { emoji: '🏀', cls: 'basketball' },
+        { emoji: '🏃', cls: 'runner'     },
+        { emoji: '🏐', cls: 'volleyball' },
     ];
-
     let sportIdx = 0;
     const sportEl = document.getElementById('sport-el');
-
     function playSport() {
         const s = sports[sportIdx];
         sportEl.textContent = s.emoji;
-        sportEl.className = `sport-item ${s.anim}`;
-
-        // Remove class after animation ends to allow re-trigger
+        sportEl.className = `sport-item ${s.cls}`;
         sportEl.addEventListener('animationend', () => {
             sportEl.className = 'sport-item';
             sportIdx = (sportIdx + 1) % sports.length;
-            setTimeout(playSport, 1800); // pause between sports
+            setTimeout(playSport, 1800);
         }, { once: true });
     }
-
-    // Start after a short delay
     setTimeout(playSport, 800);
 </script>
 </body>
