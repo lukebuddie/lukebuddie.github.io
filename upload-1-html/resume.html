@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Luke Buddie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">☽</button>
+<header class="mobile-header">
+    <a href="index.html" class="name">Luke Buddie</a>
+    <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+<nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="athletics.html">Athletics</a><a href="projects.html">Projects</a>
+    <a href="resume.html" class="active">Resume</a>
+    <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn ↗</a>
+</nav>
+<aside class="sidebar">
+    <img src="assets/img/headshot.jpg" alt="Luke Buddie" class="sidebar-photo">
+    <nav class="sidebar-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="athletics.html">Athletics</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html" class="active">Resume</a>
+    </nav>
+    <div class="sidebar-social">
+        <a href="https://www.linkedin.com/in/lukebuddie/" target="_blank">LinkedIn</a>
+        <span class="dot">·</span>
+        <a href="mailto:lukebuddie04@gmail.com">Email</a>
+    </div>
+</aside>
+
+<main class="main">
+    <div class="race-page">
+
+        <p class="greeting" style="margin-bottom:1rem;">Think you can make it to the finish?</p>
+        <h1 class="headline" style="margin-bottom:2.5rem;">
+            Run to unlock<br>my <span class="name-gradient">resume.</span>
+        </h1>
+
+        <!-- The race track -->
+        <div class="race-wrap" id="race-wrap" onclick="handleClick()">
+            <div class="race-hint" id="race-hint">Click anywhere to go — 0 / 4</div>
+            <div class="race-lane">
+                <div class="race-runner" id="race-runner">🏃</div>
+                <div class="race-dots"></div>
+                <div class="race-flag">🏁</div>
+            </div>
+        </div>
+
+        <!-- Hidden until race is won -->
+        <div class="resume-unlock" id="resume-unlock">
+            <p class="greeting" style="margin-bottom:0.5rem;">That's the spirit. 🎉</p>
+            <p style="font-size:0.95rem; color:var(--muted); font-weight:300; margin-bottom:2rem; max-width:480px;">
+                Here it is — last updated May 2026.
+            </p>
+            <div class="cta-row">
+                <a href="assets/Luke_Buddie_Resume.pdf" target="_blank" class="btn-pill btn-pill-blue">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Open Resume
+                </a>
+                <a href="assets/Luke_Buddie_Resume.pdf" download class="btn-pill btn-pill-dark">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download PDF
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <p class="page-footer">© 2026 Luke Buddie · Berkeley, CA</p>
+</main>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        document.getElementById('theme-btn').textContent = isDark ? '☽' : '☀';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-btn').textContent = savedTheme === 'dark' ? '☀' : '☽';
+    }
+    function toggleMenu() { document.getElementById('mobile-nav').classList.toggle('open'); }
+
+    /* ── Race game ── */
+    let clicks = 0;
+    const total = 4;
+    const runner  = document.getElementById('race-runner');
+    const hint    = document.getElementById('race-hint');
+    const wrap    = document.getElementById('race-wrap');
+    const unlock  = document.getElementById('resume-unlock');
+
+    const positions = ['2%', '26%', '51%', '76%', '96%'];
+
+    function handleClick() {
+        if (clicks >= total) return;
+        clicks++;
+
+        // Move runner
+        runner.style.left = positions[clicks];
+
+        // Bounce animation
+        runner.classList.remove('bounce');
+        void runner.offsetWidth; // reflow
+        runner.classList.add('bounce');
+
+        // Update hint
+        if (clicks < total) {
+            hint.textContent = `Keep going — ${clicks} / ${total}`;
+        }
+
+        // Finish!
+        if (clicks === total) {
+            hint.textContent = '';
+            runner.textContent = '🎉';
+            wrap.style.cursor = 'default';
+
+            // Celebrate then reveal
+            setTimeout(() => {
+                wrap.style.opacity = '0';
+                wrap.style.transition = 'opacity 0.5s';
+            }, 900);
+
+            setTimeout(() => {
+                wrap.style.display = 'none';
+                unlock.classList.add('show');
+            }, 1400);
+        }
+    }
+</script>
+</body>
+</html>
